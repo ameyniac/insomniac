@@ -18,15 +18,8 @@ Keep your Mac on a ventilated surface while it's awake, including with the lid c
 
 ## Install
 
-Runs on **macOS 14 Sonoma, 15 Sequoia, and 26 Tahoe** on Apple Silicon.
-Building from source requires **Swift 6.2 or later** and a compatible macOS
-SDK, independently of the app's minimum runtime version. Xcode 26.2 requires
-macOS 15.6 or later to build; a Sonoma user needs a prebuilt app.
-
-The app is compiled for macOS 14. Installed lid/sleep checks have been
-completed on Tahoe; physical checks on Sonoma and Sequoia are still pending.
-The installer checks both its own minimum and the bundle's minimum before
-requesting an administrator password.
+Requires **macOS 26 or later**, an **Apple Silicon** Mac, and a Swift 6.2 or
+later toolchain from Xcode or the Command Line Tools.
 
 ```bash
 git clone --branch main https://github.com/ameyniac/insomniac.git
@@ -98,9 +91,9 @@ the app requests system sleep when the current lid policy permits it. A Mac
 with a powered external display can remain awake under normal macOS docked
 behavior. Saved audio and brightness wait until the lid is known open.
 
-On Apple Silicon and T2 laptops, closing the lid disconnects the built-in
-microphone in hardware. Recording a meeting with the lid closed needs
-AirPods or an external mic. [More about lid behavior](docs/lid-close.md)
+The built-in microphone disconnects in hardware when the lid closes on Apple
+Silicon and T2 laptops. Use an external microphone or headphones with a mic
+for closed-lid recording. [More about lid behavior](docs/lid-close.md)
 
 ## When the session ends
 

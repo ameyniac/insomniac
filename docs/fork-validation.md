@@ -525,3 +525,18 @@ its read-only `--check-session-safety` command returned `safe` on Tahoe.
 The staged 1.0.1 bundle has not replaced Ameya's installed 1.0.0 app.
 Hosted Sequoia release compilation passed; the full CI run is being repeated
 with that fixture correction. Physical Sequoia/Sonoma validation remains open.
+
+## Compatibility experiment retired (2026-11-09)
+
+Ameya requested retiring the 1.0.1 Sonoma/Sequoia experiment, reporting that
+it did not work as well as the locally installed version. No specific new
+failure was diagnosed. Main returns to the Tahoe-only 1.0.0 baseline at
+989df02; the installed 1.0.0 app is untouched. Compatibility evidence above
+is historical, not a current support claim. No GitHub release was published.
+The staged 1.0.1 bundle and its local installer command were removed.
+Future website distribution should target macOS 26 unless Ameya explicitly
+reopens older-macOS support. Git history is retained without rewriting it.
+
+Retirement verification: source/configuration matches 989df02 exactly except
+this retained validation history. All 34 packaging and release-workflow tests
+passed. Bundle minimum is 26.0; installed app still reports 1.0.0.
