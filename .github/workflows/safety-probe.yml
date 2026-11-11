@@ -1,0 +1,26 @@
+name: Packaged safety probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        image: [macos-26, xcode-27]
+    runs-on: ${{ matrix.image }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Record environment
+        run: |
+          sw_vers
+          xcodebuild -version
+          swift --version
+      - name: Build signed app
+        run: /bin/bash scripts/build-app.sh --output "$RUNNER_TEMP/probe-bundle"
+      - name: Check actual CLI output
+        run: python3 scripts/check-safety-probe.py "$RUNNER_TEMP/probe-bundle/Insomnia.app/Contents/MacOS/Insomnia"
